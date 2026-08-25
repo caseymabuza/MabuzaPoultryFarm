@@ -82,12 +82,26 @@
     document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
 
     function submitForm() {
-      const name  = document.getElementById('f-name').value.trim();
-      const phone = document.getElementById('f-phone').value.trim();
-      if (!name || !phone) { alert('Please fill in your name and phone number.'); return; }
-      document.getElementById('modal-form-wrap').style.display = 'none';
-      document.getElementById('form-success').style.display = 'block';
-    }
+  const name    = document.getElementById('f-name').value.trim();
+  const phone   = document.getElementById('f-phone').value.trim();
+  const product = document.getElementById('f-product').value;
+  const qty     = document.getElementById('f-qty').value.trim();
+  const msg     = document.getElementById('f-msg').value.trim();
+
+  if (!name || !phone) { alert('Please fill in your name and phone number.'); return; }
+
+  const text = `New Enquiry from mabuza poultry farm Website%0A
+Name: ${name}%0A
+Phone: ${phone}%0A
+Product: ${product}%0A
+Volume: ${qty}%0A
+Notes: ${msg}`;
+
+  window.open(`https://wa.me/27795224561?text=${text}`, '_blank');
+
+  document.getElementById('modal-form-wrap').style.display = 'none';
+  document.getElementById('form-success').style.display = 'block';
+}
 
     /* ── SMOOTH ANCHOR SCROLL ─────────────────────────────── */
     document.querySelectorAll('a[href^="#"]').forEach(a => {
